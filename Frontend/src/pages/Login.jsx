@@ -1,7 +1,7 @@
 import Input from "../components/Input.component";
 import logo from "../assets/logo.png";
 import Particles from "./Particles";
-import Button from "../components/button";
+import Button from "../components/Button";
 
 import { useNavigate } from "react-router-dom";
 
