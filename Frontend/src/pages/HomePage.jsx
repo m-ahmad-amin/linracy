@@ -1,4 +1,5 @@
 import HeaderHome from "../components/HeaderHome";
+import MainHome from "../components/MainHome";
 
 export default function HomePage() {
     
@@ -9,6 +10,7 @@ export default function HomePage() {
 
         <div className="md:w-[60%]">
           <HeaderHome />
+          <MainHome />
         </div>
 
         <div className="h-full w-[20%] hidden md:block"></div>

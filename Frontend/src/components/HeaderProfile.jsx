@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
 
-export default function HeaderProfile({ userName, userData }) {
+export default function HeaderProfile({ userName, profilePicture, userData }) {
   const fileInputRef = useRef(null);
 
   const [showModal, setShowModal] = useState(false);
@@ -50,6 +50,7 @@ export default function HeaderProfile({ userName, userData }) {
         userName: userName,
         uploadedURL: uploadedURL,
         caption: caption,
+        profilePicture: profilePicture,
       });
 
       toast.success("Post created successfully");

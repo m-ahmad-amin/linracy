@@ -33,11 +33,6 @@ export default function MainProfile({userName, allPosts, setAllPosts}) {
             <Grid2X2Check className="md:w-10 md:h-10" />
             <h1 className="md:text-xl font-bold self-center">All Posts</h1>
           </div>
-          {/* <img
-            src="https://res.cloudinary.com/dzzrxqiho/image/upload/v1752450078/cld-sample.jpg"
-            className="w-[32%]
-            object-cover"
-          ></img> */}
           {allPosts.map((postElement, index) => {
             return (
             <img key={index}

@@ -13,6 +13,11 @@ const postSchema = new mongoose.Schema(
     },
 
     caption: { type: String, default: "", },
+
+    profilePicture: {
+        type: String,
+        default: "https://res.cloudinary.com/dzzrxqiho/image/upload/v1752450746/salvatore-andrea-santacroce-Nc0xNgW3G-k-unsplash_lakkzg.jpg",
+    },
   },
   { timestamps: true }
 );

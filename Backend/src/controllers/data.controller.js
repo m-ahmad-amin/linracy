@@ -30,7 +30,7 @@ export const profile = async (req, res) => {
 
 export const newPost = async (req, res) => {
   const { userName } = req.params;
-  const { uploadedURL, caption } = req.body;
+  const { uploadedURL, caption, profilePicture } = req.body;
 
   try {
     if (!uploadedURL) {
@@ -41,6 +41,7 @@ export const newPost = async (req, res) => {
       userName,
       uploadedURL,
       caption,
+      profilePicture,
     });
 
     if (newPost) {
@@ -71,7 +72,10 @@ export const allPosts = async (req, res) => {
   const { userName } = req.params;
 
   try {
-    const posts = await Post.find({ userName }).sort({ createdAt: -1 });
+
+    const filter = userName ? { userName } : {};
+
+    const posts = await Post.find(filter).sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,
@@ -84,11 +88,3 @@ export const allPosts = async (req, res) => {
     });
   }
 };
-
-export const yourFeed = async (req, res) => {
-  try {
-    
-  } catch (error) {
-    
-  }
-}

@@ -46,7 +46,7 @@ export default function Profile() {
   return (
     <>
       <HeaderProfile userName={authUser.userName} userData={userData} />
-      <MainProfile userName={authUser.userName} allPosts={allPosts} setAllPosts={setAllPosts} />
+      <MainProfile userName={authUser.userName} profilePicture={authUser.profilePicture} allPosts={allPosts} setAllPosts={setAllPosts} />
     </>
   );
 }
