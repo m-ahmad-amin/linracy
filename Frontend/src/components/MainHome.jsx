@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../lib/axios";
 import { formatDistanceToNow } from "date-fns";
+import { ThumbsUp } from "lucide-react";
 
 export default function MainHome() {
   const [allPosts, setAllPosts] = useState([]);
@@ -25,7 +26,7 @@ export default function MainHome() {
             return (
               <>
               <div className="flex justify-between self-start w-full">
-                <div className="flex self-start pl-2 pt-2 pb">
+                <div className="flex self-start pl-2 pt-2 pb-2">
                   <img
                     key={index}
                     src={postElement.profilePicture}
@@ -60,6 +61,17 @@ export default function MainHome() {
             hover:cursor-pointer
             object-cover"
                 ></img>
+
+
+
+                <div className="flex w-full p-2 gap-[5%] items-center">
+                    <ThumbsUp className="text-gray-400 scale-150 pl-1 hover:cursor-pointer hover:text-gray-700 hover:scale-125 transition-all" />
+                        <label for="comment" className="border-2 border-gray-400 w-full p-2 ring-2 ring-transparent focus-within:ring-gray-700 focus-within:border-transparent rounded-xl">
+                                <input id="comment" placeholder="Comment..." className="w-[97%] focus:outline-none"></input>
+                        </label>
+                </div>
+
+
               </>
             );
           })}
