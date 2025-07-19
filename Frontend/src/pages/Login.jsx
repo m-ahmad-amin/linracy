@@ -4,16 +4,46 @@ import Particles from "./Particles";
 import Button from "../components/Button";
 
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { axiosInstance } from "../lib/axios";
+import { toast } from 'react-hot-toast';
+import { useAuthStore } from "../store/useAuthStore";
 
 export default function Login() {
 
+  const {authUser, checkAuth, isCheckingAuth} = useAuthStore()
+
   const navigate = useNavigate();
+
+  const [userData, setUserData] = useState({
+    userName: "",
+    password: "",
+  });
+
+  const handleSignInButton = async () => {
+    try {
+      const res = await axiosInstance.post("/auth/login", {
+        userName: userData.userName,
+        password: userData.password,
+      });
+
+      toast.success("login successful");
+      checkAuth();
+      navigate("/");
+    } catch (error) {
+      if (error.response?.data?.message) {
+      toast.error(error.response.data.message);
+    } else {
+      toast.error("Something went wrong");
+    }
+    }
+  };
 
   function handleCreate() {
     navigate("/signup");
   }
 
-    return (
+  return (
     <div className="relative">
       <div className="absolute inset-0 h-dvh" style={{ width: "100%" }}>
         <Particles
@@ -33,13 +63,30 @@ export default function Login() {
         </div>
 
         <div className="flex flex-col gap-2 relative rounded-lg">
-          <Input placeholder={"Username"} type="text" />
+          <Input
+            placeholder={"Username"}
+            type="text"
+            value={userData.userName}
+            setUserData={setUserData}
+            name={"userName"}
+          />
 
-          <Input placeholder={"Password"} type="password" />
+          <Input
+            placeholder={"Password"}
+            type="password"
+            value={userData.password}
+            setUserData={setUserData}
+            name={"password"}
+          />
 
-          <Button name={"Log in"} />
+          <Button handleClick={handleSignInButton} name={"Log in"} />
 
-          <h1 onClick={handleCreate} className="text-center text-sm md:text-lg hover:cursor-pointer hover:text-blue-700">New to Linracy? Create Account</h1>
+          <h1
+            onClick={handleCreate}
+            className="text-center text-sm md:text-lg hover:cursor-pointer hover:text-blue-700"
+          >
+            New to Linracy? Create Account
+          </h1>
         </div>
       </div>
     </div>

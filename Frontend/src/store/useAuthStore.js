@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios.js";
+import { toast } from "react-hot-toast";
 
 export const useAuthStore = create((set, get) => {
   return {
@@ -12,7 +13,11 @@ export const useAuthStore = create((set, get) => {
 
         set({ authUser: res.data });
       } catch (error) {
-        console.log("Error in checkAuth:", error);
+        // if (error.response?.data?.message) {
+        //   toast.error(error.response.data.message);
+        // } else {
+        //   toast.error("Something went wrong");
+        // }
         set({ authUser: null });
       } finally {
         set({ isCheckingAuth: false });

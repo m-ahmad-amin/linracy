@@ -30,6 +30,11 @@ const userSchema = new mongoose.Schema(
         default: "https://res.cloudinary.com/dzzrxqiho/image/upload/v1752450746/salvatore-andrea-santacroce-Nc0xNgW3G-k-unsplash_lakkzg.jpg",
     },
 
+    posts: {
+      type: Number,
+      default: 0,
+    },
+
     followers: {
         type: Number,
         default: 0,
