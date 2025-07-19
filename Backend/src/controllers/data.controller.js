@@ -84,3 +84,11 @@ export const allPosts = async (req, res) => {
     });
   }
 };
+
+export const yourFeed = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
