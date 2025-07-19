@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={authUser && authUser.userName ? <HomePage /> : <Navigate to="/login" />} />
+        <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
         <Route path="/login" element={!authUser ? <Login /> : <Navigate to="/"/>} />
         <Route path="/signup" element={!authUser ? <Signup /> : <Navigate to="/"/>} />
         <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
