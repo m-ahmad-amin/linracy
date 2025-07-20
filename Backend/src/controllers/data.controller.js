@@ -72,7 +72,6 @@ export const allPosts = async (req, res) => {
   const { userName } = req.params;
 
   try {
-
     const filter = userName ? { userName } : {};
 
     const posts = await Post.find(filter).sort({ createdAt: -1 });
@@ -85,6 +84,25 @@ export const allPosts = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Something went wrong while fetching posts",
+    });
+  }
+};
+
+export const searchUser = async (req, res) => {
+  try {
+    const { userName } = req.body;
+    const users = await User.find({
+      userName: { $regex: userName, $options: "i" },
+    });
+
+    res.status(200).json({
+      success: true,
+      users
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong while fetching users",
     });
   }
 };

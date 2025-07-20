@@ -29,11 +29,10 @@ export default function MainHome() {
         <div className="w-[100%] md:w-[62%] flex flex-col items-center">
           {allPosts.map((postElement, index) => {
             return (
-              <>
+              <div key={index}>
                 <div className="flex justify-between self-start w-full">
                   <div className="flex self-start pl-2 pt-2 pb-2">
                     <img
-                      key={index}
                       src={postElement.profilePicture}
                       className="w-12 h-12
                     border-2
@@ -47,7 +46,7 @@ export default function MainHome() {
                         if (authUser.userName === postElement.userName) {
                           navigate("/profile");
                         } else {
-                          navigate("/othersProfile", { state: { userName: postElement.userName, profilePicture: postElement.profilePicture } });
+                          navigate("/othersProfile", { state: { userName: postElement.userName, profilePicture: postElement.profilePicture, page: "" } });
                         }
                       }}
                     >
@@ -69,7 +68,6 @@ export default function MainHome() {
                 </h1>
 
                 <img
-                  key={index}
                   src={postElement.uploadedURL}
                   className="w-[100%]
              border-gray-300 md:border border-y
@@ -81,7 +79,7 @@ export default function MainHome() {
                 <div className="flex w-full p-2 gap-[5%] items-center">
                   <ThumbsUp className="text-gray-400 scale-150 pl-1 hover:cursor-pointer hover:text-gray-700 hover:scale-125 transition-all" />
                   <label
-                    for="comment"
+                    htmlFor="comment"
                     className="border-2 border-gray-400 w-full p-2 ring-2 ring-transparent focus-within:ring-gray-700 focus-within:border-transparent rounded-xl"
                   >
                     <input
@@ -91,7 +89,7 @@ export default function MainHome() {
                     ></input>
                   </label>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>

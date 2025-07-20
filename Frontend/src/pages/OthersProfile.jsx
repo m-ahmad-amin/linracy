@@ -13,7 +13,7 @@ export default function OthersProfile() {
 
   const location = useLocation();
 
-  const { userName, profilePicture } = location.state;
+  const { userName, profilePicture, page } = location.state;
 
   const { postCreated, setPostCreated, isPosting } = usePostStore();
 
@@ -52,7 +52,7 @@ export default function OthersProfile() {
     <>
     <div className="flex justify-center h-dvh md:justify-between">
             <div className="h-full w-[20%] hidden md:block">
-              <SideBar page={"home"}/>
+              <SideBar page={page}/>
             </div>
           <div className="md:w-full">
       <HeaderProfile userName={userName} userData={userData} />

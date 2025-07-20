@@ -3,10 +3,11 @@ import { House, Search, UserPenIcon, Settings, CircleSlash } from "lucide-react"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SideBar({page, showModal, setShowModal}) {
+export default function SideBar({page, showModal, setShowModal, setPage}) {
 
   const handleSearchClick = async () => {
     setShowModal(true);
+    setPage("search")
   }
 
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function SideBar({page, showModal, setShowModal}) {
         </div>
 
         <div className="pt-3">
-          <div onClick={handleSearchClick} className={`p-2 flex gap-2 font-semibold transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
+          <div onClick={handleSearchClick} className={`${page === "search" && "shadow-lg"} p-2 flex gap-2 ${page === "search" ? "font-bold" : "font-semibold"} transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
             <Search />
             <h1>Search</h1>
           </div>

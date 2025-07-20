@@ -2,10 +2,11 @@ import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 
-export default function HeaderHome({showModal, setShowModal}) {
+export default function HeaderHome({showModal, setShowModal, setPage}) {
 
   const handleSearchClick = async () => {
     setShowModal(true);
+    setPage("search")
   }
 
     const navigate = useNavigate();
