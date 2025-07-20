@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "robots.txt"],
       manifest: {
-        name: "My App",
-        short_name: "App",
+        name: "Linracy",
+        short_name: "Linracy",
         start_url: "/",
         display: "standalone",
         background_color: "#ffffff",
