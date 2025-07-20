@@ -5,9 +5,10 @@ import { usePostStore } from "../store/usePostStore";
 import { useAuthStore } from "../store/useAuthStore";
 import { useState, useEffect } from "react";
 import { Loader } from "lucide-react";
+import SideBar from "../components/SideBar.jsx";
+import FooterProfile from "../components/FooterProfile.jsx";
 
 export default function Profile() {
-
   const { postCreated, setPostCreated, isPosting } = usePostStore();
 
   const [allPosts, setAllPosts] = useState([]);
@@ -37,16 +38,31 @@ export default function Profile() {
   }, [postCreated]);
 
   if (isPosting) {
-      return (
+    return (
       <div className="h-dvh flex justify-center items-center">
         <Loader className="size-10 animate-spin" />
-        </div>)
-    }
+      </div>
+    );
+  }
 
   return (
     <>
-      <HeaderProfile userName={authUser.userName} userData={userData} />
-      <MainProfile userName={authUser.userName} profilePicture={authUser.profilePicture} allPosts={allPosts} setAllPosts={setAllPosts} />
+      <div className="flex justify-center h-dvh md:justify-between">
+        <div className="h-full w-[20%] hidden md:block">
+          <SideBar page={"profile"}/>
+        </div>
+
+        <div className="md:w-full">
+          <HeaderProfile userName={authUser.userName} userData={userData} />
+          <MainProfile
+            userName={authUser.userName}
+            profilePicture={authUser.profilePicture}
+            allPosts={allPosts}
+            setAllPosts={setAllPosts}
+          />
+          <FooterProfile />
+        </div>
+      </div>
     </>
   );
 }

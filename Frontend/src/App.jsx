@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast';
 
 import {useAuthStore} from "./store/useAuthStore"
 import { useEffect } from "react";
+import OthersProfile from "./pages/OthersProfile";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={!authUser ? <Login /> : <Navigate to="/"/>} />
         <Route path="/signup" element={!authUser ? <Signup /> : <Navigate to="/"/>} />
         <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
+        <Route path="/othersProfile" element={authUser ? <OthersProfile /> : <Navigate to="/login" />} />
         <Route path="/settings" element={authUser ? <Settings /> : <Navigate to="/login" />} />
         <Route path="/logout" element={authUser ? <Logout /> : <Navigate to="/login" />} />
         <Route path="*" element={<h1>File not found</h1>} />

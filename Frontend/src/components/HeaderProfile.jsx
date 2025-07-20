@@ -4,8 +4,11 @@ import { usePostStore } from "../store/usePostStore";
 import { toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
+import { useAuthStore } from "../store/useAuthStore.js";
 
 export default function HeaderProfile({ userName, profilePicture, userData }) {
+  const { authUser } = useAuthStore();
+
   const fileInputRef = useRef(null);
 
   const [showModal, setShowModal] = useState(false);
@@ -152,11 +155,9 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
           </div>
         </div>
 
-        {/* <div className="hidden md:block md:pt-3">
-          <h1 className="font-semibold text-lg">@{userName}</h1>
-        </div> */}
       </div>
 
+      {authUser.userName === userName && (
       <div className="flex w-full justify-center text-md h-8 md:h-16">
         <div className="flex w-[80%] mt-1 justify-center gap-2 md:w-[30%]">
           <div className="flex items-center gap-2 w-[50%]">
@@ -181,6 +182,7 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
           </button>
         </div>
       </div>
+      )}
 
       <hr className="mt-4"></hr>
     </>

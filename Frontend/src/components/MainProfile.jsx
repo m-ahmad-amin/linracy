@@ -27,7 +27,7 @@ export default function MainProfile({userName, allPosts, setAllPosts}) {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center pb-2">
         <div className="flex flex-wrap gap-1 w-[90%] justify-center">
           <div className="flex gap-2 w-full m-2 md:m-4">
             <Grid2X2Check className="md:w-10 md:h-10" />
@@ -43,6 +43,7 @@ export default function MainProfile({userName, allPosts, setAllPosts}) {
           })}
         </div>
       </div>
+      <hr></hr>
     </>
   );
 }

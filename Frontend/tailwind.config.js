@@ -18,4 +18,14 @@ export default {
     },
   },
   plugins: [],
+  // plugins: [require("daisyui")],
+//   daisyui: {
+//   themes: [
+//     "light", "dark", "cupcake", "bumblebee", "emerald", "corporate", 
+//     "synthwave", "retro", "cyberpunk", "valentine", "halloween",
+//     "garden", "forest", "aqua", "lofi", "pastel", "fantasy", 
+//     "wireframe", "luxury", "black", "dracula", "cmyk", "autumn", 
+//     "business", "acid", "lemonade", "night", "coffee", "winter", "nord", "sunset"
+//   ],
+// },
 }

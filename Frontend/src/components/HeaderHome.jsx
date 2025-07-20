@@ -11,7 +11,7 @@ export default function HeaderHome() {
     }
 
   return (
-    <>
+    <div className="fixed bg-white md:hidden w-full">
       <div className="flex justify-between p-3 items-center md:p-3 md:justify-center">
         <img src={logo} alt="Linracy" className="w-[30%] h-auto md:w-[25%] md:pt-2" />
         <div className="flex items-center gap-3 md:hidden">
@@ -26,6 +26,6 @@ export default function HeaderHome() {
       </div>
 
       <hr className="mt-1"></hr>
-    </>
+    </div>
   );
 }
