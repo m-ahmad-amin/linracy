@@ -1,8 +1,14 @@
 import logo from "../assets/logo.png";
 import { House, Search, UserPenIcon, Settings, CircleSlash } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SideBar({page}) {
+export default function SideBar({page, showModal, setShowModal}) {
+
+  const handleSearchClick = async () => {
+    setShowModal(true);
+  }
+
     const navigate = useNavigate();
   return (
     <>
@@ -21,7 +27,7 @@ export default function SideBar({page}) {
         </div>
 
         <div className="pt-3">
-          <div className={`p-2 flex gap-2 font-semibold transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
+          <div onClick={handleSearchClick} className={`p-2 flex gap-2 font-semibold transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
             <Search />
             <h1>Search</h1>
           </div>

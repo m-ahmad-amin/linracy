@@ -5,6 +5,8 @@ import { usePostStore } from "../store/usePostStore.js";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Loader } from "lucide-react";
+import FooterProfile from "../components/FooterProfile.jsx";
+import SideBar from "../components/SideBar.jsx";
 
 export default function OthersProfile() {
 
@@ -48,8 +50,16 @@ export default function OthersProfile() {
 
   return (
     <>
+    <div className="flex justify-center h-dvh md:justify-between">
+            <div className="h-full w-[20%] hidden md:block">
+              <SideBar page={"home"}/>
+            </div>
+          <div className="md:w-full">
       <HeaderProfile userName={userName} userData={userData} />
       <MainProfile userName={userName} profilePicture={profilePicture} allPosts={allPosts} setAllPosts={setAllPosts} />
+      <FooterProfile />
+      </div>
+      </div>
     </>
   );
 }
