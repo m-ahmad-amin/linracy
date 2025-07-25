@@ -25,6 +25,8 @@ export default function Signup() {
       });
 
       toast.success("sign up success");
+      checkAuth();
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.data?.message) {
         toast.error(error.response.data.message);

@@ -55,7 +55,7 @@ export default function OthersProfile() {
               <SideBar page={page}/>
             </div>
           <div className="md:w-full">
-      <HeaderProfile userName={userName} userData={userData} />
+      <HeaderProfile userName={userName} profilePicture={profilePicture} userData={userData} />
       <MainProfile userName={userName} profilePicture={profilePicture} allPosts={allPosts} setAllPosts={setAllPosts} />
       <FooterProfile />
       </div>

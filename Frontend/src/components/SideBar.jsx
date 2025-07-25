@@ -44,7 +44,7 @@ export default function SideBar({page, showModal, setShowModal, setPage}) {
         </div>
 
         <div className="pt-3">
-          <div className="p-2 flex gap-2 font-semibold transition-all hover:bg-gray-200 rounded hover:cursor-pointer">
+          <div className={`${page === "settings" && "shadow-lg"} p-2 flex gap-2 ${page === "settings" ? "font-bold" : "font-semibold"} transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
             <Settings />
             <h1>Settings</h1>
           </div>

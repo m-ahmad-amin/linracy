@@ -15,6 +15,7 @@ export default function Profile() {
 
   const [userData, setUserData] = useState({
     fullName: "",
+    profilePic: "",
     posts: 0,
     follower: 0,
     following: 0,
@@ -27,6 +28,7 @@ export default function Profile() {
     // console.log(res.data);
     setUserData({
       fullName: res.data.fullName,
+      profilePic: res.data.profilePic,
       posts: res.data.posts,
       follower: res.data.follower,
       following: res.data.following,

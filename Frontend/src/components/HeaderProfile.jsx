@@ -5,8 +5,10 @@ import { toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
 import { useAuthStore } from "../store/useAuthStore.js";
+import { useNavigate } from "react-router-dom";
 
 export default function HeaderProfile({ userName, profilePicture, userData }) {
+  const navigate = useNavigate();
   const { authUser } = useAuthStore();
 
   const fileInputRef = useRef(null);
@@ -22,7 +24,6 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
     const file = e.target.files[0];
 
     if (!file) return;
-    console.log(file);
 
     const data = new FormData();
     data.append("file", file);
@@ -111,14 +112,14 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
         </div>
       )}
 
-      <div className="flex justify-between p-3 md:justify-evenly md:gap-[200px] md:text-xl md:hidden">
+      {/* <div className="flex justify-between p-3 md:justify-evenly md:gap-[200px] md:text-xl md:hidden">
         <h1 className="font-semibold">@{userName}</h1>
         <Settings />
-      </div>
+      </div> */}
 
-      <div className="flex pl-5 md:justify-center md:gap-24 md:p-5">
+      <div className="flex justify-center p-5">
         <img
-          src="https://res.cloudinary.com/dzzrxqiho/image/upload/v1752450074/samples/two-ladies.jpg"
+          src={authUser.userName === userName ? authUser.profilePic : profilePicture}
           alt="profile pic"
           className="object-cover rounded-full w-20 h-20 md:w-36 md:h-36"
         ></img>
@@ -177,8 +178,10 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
             />
           </div>
 
-          <button className="w-[50%] h-full bg-[#979591] text-white rounded hover:bg-[#504f4d]">
-            Edit Profile
+          <button onClick={() => {
+            navigate("/settings")
+          }} className="w-[50%] h-full bg-[#979591] text-white rounded hover:bg-[#504f4d]">
+            Edit Profile and Settings
           </button>
         </div>
       </div>

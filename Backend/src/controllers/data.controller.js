@@ -19,6 +19,7 @@ export const profile = async (req, res) => {
 
     res.status(200).json({
       fullName: user.fullName,
+      profilePic: user.profilePic,
       posts: user.posts,
       follower: user.followers,
       following: user.following,

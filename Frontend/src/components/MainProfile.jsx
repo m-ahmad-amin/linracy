@@ -28,7 +28,7 @@ export default function MainProfile({userName, allPosts, setAllPosts}) {
   return (
     <>
       <div className="flex justify-center pb-2">
-        <div className="flex flex-wrap gap-1 w-[90%] justify-center">
+        <div className="flex flex-wrap gap-1 w-[100%] md:w-[90%] justify-center items-center">
           <div className="flex gap-2 w-full m-2 md:m-4">
             <Grid2X2Check className="md:w-10 md:h-10" />
             <h1 className="md:text-xl font-bold self-center">All Posts</h1>
@@ -38,7 +38,9 @@ export default function MainProfile({userName, allPosts, setAllPosts}) {
             <img key={index}
             src={postElement.uploadedURL}
             className="w-[32%]
-            object-cover"></img>
+            aspect-[3/4]
+            object-cover
+            hover:cursor-pointer"></img>
             )
           })}
         </div>
