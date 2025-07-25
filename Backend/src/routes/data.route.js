@@ -1,8 +1,9 @@
 import express from "express";
-import { profile, newPost, allPosts, searchUser } from "../controllers/data.controller.js";
+import { profile, newPost, allPosts, searchUser, updateProfile } from "../controllers/data.controller.js";
 
 const router = express.Router();
 
+router.post("/update", updateProfile);
 
 router.post("/:userName/new", newPost);
 

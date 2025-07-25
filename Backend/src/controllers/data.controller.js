@@ -10,7 +10,7 @@ export const profile = async (req, res) => {
     }
 
     const user = await User.findOne({ userName }).select(
-      "fullName posts followers following"
+      "fullName profilePic posts followers following"
     );
 
     if (!user) {
@@ -25,6 +25,53 @@ export const profile = async (req, res) => {
       following: user.following,
     });
   } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+    const { userName, updatedProfilePic, updatedUserName, updatedFullName } =
+      req.body;
+
+    if (!userName) {
+      return res.status(400).json({ message: "Username not provided" });
+    }
+
+    if (!updatedProfilePic || !updatedUserName || !updatedFullName) {
+      return res.status(400).json({ message: "Invalid Information" });
+    }
+
+    const findExistingUserNameUser = await User.findOne(
+      {userName: updatedUserName}
+    )
+
+    if (findExistingUserNameUser && findExistingUserNameUser.userName !== userName) {
+      return res.status(400).json({message: "Username already exists!"})
+    }
+
+    const updatedUser = await User.findOneAndUpdate(
+      { userName },
+      {
+        userName: updatedUserName,
+        fullName: updatedFullName,
+        profilePic: updatedProfilePic,
+      },
+      { new: true }
+    );
+
+    const updatedPost = await Post.updateMany(
+      { userName },
+      { userName: updatedUserName, profilePicture: updatedProfilePic },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -98,8 +145,8 @@ export const searchUser = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      users
-    })
+      users,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,

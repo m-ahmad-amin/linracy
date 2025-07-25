@@ -63,8 +63,8 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
       setCaption("");
       setShowModal(false);
     } catch (error) {
-      if (error?.response?.data?.messag) {
-        toast.error(error?.response?.data?.messag);
+      if (error?.response?.data?.message) {
+        toast.error(error?.response?.data?.message);
       } else {
         toast.error("Something went wrong");
       }
