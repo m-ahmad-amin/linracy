@@ -114,7 +114,9 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
 
       <div className="flex justify-between p-3 md:hidden">
         <div className="flex gap-2 items-center">
-        <ArrowLeft />
+        <ArrowLeft className="hover:border hover:rounded-full hover:cursor-pointer hover:bg-[#c9c4b9]" onClick={() => {
+          navigate(-1);
+        }} />
         <h1 className="font-bold text-lg">@{userName}</h1>
         </div>
         <LogOut />

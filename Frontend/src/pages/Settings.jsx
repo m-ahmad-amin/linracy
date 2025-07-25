@@ -124,7 +124,7 @@ export default function Settings() {
           </div>
 
           <div className="flex justify-end w-[90%] md:w-[50%] gap-2">
-            <button className="p-1 w-20 h-full bg-[#979591] text-white rounded hover:bg-[#504f4d]">
+            <button onClick={navigate(-1)} className="p-1 w-20 h-full bg-[#979591] text-white rounded hover:bg-[#504f4d]">
               Cancel
             </button>
             <button className="w-20 h-full bg-[#d0cec9] text-white rounded hover:bg-[#d0cec9] hover:cursor-default">
