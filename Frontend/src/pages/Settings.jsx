@@ -106,7 +106,7 @@ export default function Settings() {
     <>
       {showLogOutModal && (
         <div className="flex justify-center fixed items-center w-full inset-0 z-50 bg-black/50">
-          <div className="bg-white w-[90%] md:w-[30%] h-[16%] md:h-[16%] rounded-lg p-4 flex flex-col gap-4">
+          <div className="bg-white w-[90%] lg:w-[30%] h-36 sm:h-32 rounded-lg p-4 flex flex-col gap-4">
             <h1 className="font-semibold text-lg">
               Are you sure you want to log out?
             </h1>

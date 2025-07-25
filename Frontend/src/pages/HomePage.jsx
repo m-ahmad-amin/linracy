@@ -53,7 +53,7 @@ export default function HomePage() {
     <>
       {showModal && (
         <div className="flex items-center w-full justify-center fixed inset-0 z-50 bg-black/50">
-          <div className="w-[90%] h-[95%] md:w-[70%] bg-white rounded-xl p-5">
+          <div className="w-[95%] h-[95%] md:w-[70%] bg-white rounded-xl p-5">
             <div className="flex items-center gap-2 pr-2 pb-5">
               <X
                 className="scale-150 p-1 hover:shadow-lg hover:bg-gray-100 hover:text-gray-700 rounded-md transition-all hover:cursor-pointer"
