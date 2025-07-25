@@ -4,10 +4,13 @@ import Particles from "./Particles";
 import Button from "../components/Button";
 import { use, useEffect, useState } from "react";
 import { toast } from 'react-hot-toast';
-
+import { useAuthStore } from "../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
 
 export default function Signup() {
+  const {checkAuth} = useAuthStore()
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     fullName: "",

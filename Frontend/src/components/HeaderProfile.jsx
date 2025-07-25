@@ -1,4 +1,4 @@
-import { Settings, Plus } from "lucide-react";
+import { Settings, Plus, LogOut, ArrowLeft } from "lucide-react";
 import { axiosInstance } from "../lib/axios.js";
 import { usePostStore } from "../store/usePostStore";
 import { toast } from "react-hot-toast";
@@ -112,12 +112,15 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
         </div>
       )}
 
-      {/* <div className="flex justify-between p-3 md:justify-evenly md:gap-[200px] md:text-xl md:hidden">
-        <h1 className="font-semibold">@{userName}</h1>
-        <Settings />
-      </div> */}
+      <div className="flex justify-between p-3 md:hidden">
+        <div className="flex gap-2 items-center">
+        <ArrowLeft />
+        <h1 className="font-bold text-lg">@{userName}</h1>
+        </div>
+        <LogOut />
+      </div>
 
-      <div className="flex justify-center p-5">
+      <div className="flex justify-center pl-5 pr-5 pb-5 md:pt-5">
         <img
           src={authUser.userName === userName ? authUser.profilePic : profilePicture}
           alt="profile pic"
@@ -181,7 +184,7 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
           <button onClick={() => {
             navigate("/settings")
           }} className="w-[50%] h-full bg-[#979591] text-white rounded hover:bg-[#504f4d]">
-            Edit Profile and Settings
+            Edit Profile
           </button>
         </div>
       </div>
