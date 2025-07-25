@@ -70,12 +70,13 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
 
   const handleUpload = async () => {
     setIsPosting(true);
+    console.log(authUser.profilePic)
     try {
       await axiosInstance.post(`/profile/${userName}/new`, {
         userName: userName,
         uploadedURL: uploadedURL,
         caption: caption,
-        profilePicture: profilePicture,
+        profilePicture: authUser.profilePic,
       });
 
       toast.success("Post created successfully");

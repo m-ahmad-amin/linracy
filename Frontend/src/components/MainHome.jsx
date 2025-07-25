@@ -21,7 +21,7 @@ export default function MainHome() {
 
   useEffect(() => {
     getAllPosts();
-  });
+  }, []);
 
   return (
     <>

@@ -30,6 +30,7 @@ export default function HomePage() {
         userName: searchUsers,
       });
 
+      console.log(res.data.users)
       setSearchedUsers(res.data.users);
     } catch (error) {}
   };
@@ -81,7 +82,7 @@ export default function HomePage() {
                           navigate("/profile");
                         } else {
                           setPage("search")
-                          navigate("/othersProfile", { state: { userName: user.userName, profilePicture: user.profilePicture, page: page } });
+                          navigate("/othersProfile", { state: { userName: user.userName, profilePicture: user.profilePic, page: page } });
                         }
                   }} key={user._id} className="flex p-2 gap-4 rounded-xl hover:cursor-pointer transition-all hover:bg-gray-200">
                     <img
