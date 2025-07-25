@@ -1,8 +1,11 @@
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
+import { useAuthStore } from "../store/useAuthStore";
 
 export default function HeaderHome({showModal, setShowModal, setPage}) {
+
+  const { authUser } = useAuthStore();
 
   const handleSearchClick = async () => {
     setShowModal(true);
@@ -23,7 +26,7 @@ export default function HeaderHome({showModal, setShowModal, setPage}) {
             <Search onClick={handleSearchClick} className="text-gray-500 w-8 h-8" />
             <img
             onClick={handleProfileClick}
-          src="https://res.cloudinary.com/dzzrxqiho/image/upload/v1752450074/samples/two-ladies.jpg"
+          src={authUser.profilePic}
           alt="profile pic"
           className="object-cover rounded-full w-10 h-10"
         ></img>

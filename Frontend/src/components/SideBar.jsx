@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function SideBar({page, showModal, setShowModal, setPage}) {
 
   const handleSearchClick = async () => {
-    setShowModal(true);
-    setPage("search")
+    navigate("/", { state: { openSearchModal: true } });
   }
 
     const navigate = useNavigate();
@@ -44,7 +43,9 @@ export default function SideBar({page, showModal, setShowModal, setPage}) {
         </div>
 
         <div className="pt-3">
-          <div className={`${page === "settings" && "shadow-lg"} p-2 flex gap-2 ${page === "settings" ? "font-bold" : "font-semibold"} transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
+          <div onClick={() => {
+            navigate("/settings")
+          }} className={`${page === "settings" && "shadow-lg"} p-2 flex gap-2 ${page === "settings" ? "font-bold" : "font-semibold"} transition-all hover:bg-gray-200 rounded hover:cursor-pointer`}>
             <Settings />
             <h1>Settings</h1>
           </div>

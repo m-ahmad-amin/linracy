@@ -9,7 +9,28 @@ import { useNavigate } from "react-router-dom";
 
 export default function HeaderProfile({ userName, profilePicture, userData }) {
   const navigate = useNavigate();
-  const { authUser } = useAuthStore();
+  const { authUser, checkAuth } = useAuthStore();
+  const [showLogOutModal, setShowLogOutModal] = useState(false);
+
+  const handleLogOutClick = () => {
+    setShowLogOutModal(true);
+  };
+
+  const handleLogOutSureClick = async () => {
+    try {
+      const res = await axiosInstance.post("/auth/logout");
+
+      toast.success("Log out success");
+      checkAuth();
+      navigate("/login");
+    } catch (error) {
+      if (error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Something went wrong");
+      }
+    }
+  };
 
   const fileInputRef = useRef(null);
 
@@ -72,6 +93,33 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
   };
   return (
     <>
+    {showLogOutModal && (
+        <div className="flex justify-center fixed items-center w-full inset-0 z-50 bg-black/50">
+          <div className="bg-white w-[90%] md:w-[30%] h-[14%] md:h-[16%] rounded-lg p-4 flex flex-col gap-4">
+            <h1 className="font-semibold text-lg">
+              Are you sure you want to log out?
+            </h1>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => {
+                  setShowLogOutModal(false);
+                }}
+                className="w-20 h-10 bg-[#979591] text-white rounded hover:bg-[#504f4d] p-2"
+              >
+                <h1 className="font-bold text-md">Cancel</h1>
+              </button>
+              <button
+                onClick={handleLogOutSureClick}
+                className="w-30 h-10 bg-[#e84326] text-white rounded hover:bg-[#823528] flex p-2 gap-2"
+              >
+                <h1 className="font-bold text-md">Log Out</h1>
+                <LogOut />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
           <div className="bg-white pl-4 pr-4 pb-4 pt-2 rounded-lg w-[90%] max-w-lg shadow-lg">
@@ -119,7 +167,7 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
         }} />
         <h1 className="font-bold text-lg">@{userName}</h1>
         </div>
-        <LogOut />
+        <LogOut onClick={handleLogOutClick} />
       </div>
 
       <div className="flex justify-center pl-5 pr-5 pb-5 md:pt-5">

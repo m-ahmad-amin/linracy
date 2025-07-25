@@ -13,6 +13,8 @@ export default function Profile() {
 
   const [allPosts, setAllPosts] = useState([]);
 
+  const [showModal, setShowModal] = useState(false);
+
   const [userData, setUserData] = useState({
     fullName: "",
     profilePic: "",
