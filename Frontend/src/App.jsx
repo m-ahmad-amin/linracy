@@ -4,6 +4,7 @@ import Signup from "./pages/Signup";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import HomePage from "./pages/HomePage";
+import Full from "./pages/Full";
 import { Loader } from "lucide-react";
 import { Toaster } from 'react-hot-toast';
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/othersProfile" element={authUser ? <OthersProfile /> : <Navigate to="/login" />} />
         <Route path="/settings" element={authUser ? <Settings /> : <Navigate to="/login" />} />
+        <Route path="/full" element={<Full />} />
         <Route path="*" element={<h1>File not found</h1>} />
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />

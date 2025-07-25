@@ -95,7 +95,7 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
     <>
     {showLogOutModal && (
         <div className="flex justify-center fixed items-center w-full inset-0 z-50 bg-black/50">
-          <div className="bg-white w-[90%] lg:w-[30%] h-36 sm:h-32 rounded-lg p-4 flex flex-col gap-4">
+          <div className="bg-white w-[90%] lg:w-[30%] h-36 xxsm:h-32 rounded-lg p-4 flex flex-col gap-4">
             <h1 className="font-semibold text-lg">
               Are you sure you want to log out?
             </h1>
@@ -171,11 +171,14 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
       </div>
 
       <div className="flex justify-center pl-5 pr-5 pb-5 md:pt-5">
+        <div>
         <img
           src={authUser.userName === userName ? authUser.profilePic : profilePicture}
           alt="profile pic"
           className="object-cover rounded-full w-20 h-20 md:w-36 md:h-36"
         ></img>
+        <h1 className="font-bold text-lg text-center hidden md:block">@{userName}</h1>
+        </div>
 
         <div className="flex flex-col pl-8 md:text-lg md:pt-3">
           <div>
@@ -208,8 +211,11 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* <div className="flex w-[80%] justify-center text-md">
+        <h1 className="font-bold text-lg">@{userName}</h1>
+      </div> */}
 
       {authUser.userName === userName && (
       <div className="flex w-full justify-center text-md h-8 md:h-16">

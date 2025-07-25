@@ -4,8 +4,10 @@ import { formatDistanceToNow } from "date-fns";
 import { ThumbsUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
+import Full from "../pages/Full";
 
 export default function MainHome() {
+  const { authUser } = useAuthStore();
   const navigate = useNavigate();
   const [allPosts, setAllPosts] = useState([]);
 
@@ -19,11 +21,10 @@ export default function MainHome() {
 
   useEffect(() => {
     getAllPosts();
-  }, []);
-
-  const { authUser } = useAuthStore();
+  });
 
   return (
+    <>
     <div className="pt-20 md:pt-2">
       <div className="flex flex-col items-center">
         <div className="w-[100%] md:w-[62%] flex flex-col items-center">
@@ -46,7 +47,13 @@ export default function MainHome() {
                         if (authUser.userName === postElement.userName) {
                           navigate("/profile");
                         } else {
-                          navigate("/othersProfile", { state: { userName: postElement.userName, profilePicture: postElement.profilePicture, page: "" } });
+                          navigate("/othersProfile", {
+                            state: {
+                              userName: postElement.userName,
+                              profilePicture: postElement.profilePicture,
+                              page: "",
+                            },
+                          });
                         }
                       }}
                     >
@@ -69,6 +76,9 @@ export default function MainHome() {
 
                 <img
                   src={postElement.uploadedURL}
+                  onClick={(e) => {
+                navigate("/full", {state: {clickedPost: postElement}})
+              }}
                   className="w-[100%]
              border-gray-300 md:border border-y
             md:rounded
@@ -76,7 +86,7 @@ export default function MainHome() {
             object-cover"
                 ></img>
 
-                <div className="flex w-full p-2 gap-[5%] items-center">
+                {/* <div className="flex w-full p-2 gap-[5%] items-center">
                   <ThumbsUp className="text-gray-400 scale-150 pl-1 hover:cursor-pointer hover:text-gray-700 hover:scale-125 transition-all" />
                   <label
                     htmlFor="comment"
@@ -88,12 +98,14 @@ export default function MainHome() {
                       className="w-[97%] focus:outline-none"
                     ></input>
                   </label>
-                </div>
+                </div> */}
+                <hr className="p-2"></hr>
               </div>
             );
           })}
         </div>
       </div>
     </div>
+    </>
   );
 }

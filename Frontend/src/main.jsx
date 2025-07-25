@@ -7,6 +7,10 @@ import { registerSW } from 'virtual:pwa-register';
 
 import { BrowserRouter } from "react-router-dom";
 
+import Modal from "react-modal"
+
+Modal.setAppElement('#root');
+
 registerSW();
 
 createRoot(document.getElementById('root')).render(

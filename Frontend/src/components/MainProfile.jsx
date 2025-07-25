@@ -3,8 +3,11 @@ import { useState } from "react";
 import { axiosInstance } from "../lib/axios.js";
 import { usePostStore } from "../store/usePostStore";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MainProfile({userName, allPosts, setAllPosts}) {
+
+  const navigate = useNavigate();
 
   const { postCreated, setPostCreated } = usePostStore();
 
@@ -36,6 +39,9 @@ export default function MainProfile({userName, allPosts, setAllPosts}) {
           {allPosts.map((postElement, index) => {
             return (
             <img key={index}
+            onClick={(e) => {
+                navigate("/full", {state: {clickedPost: postElement}})
+              }}
             src={postElement.uploadedURL}
             className="w-[32%]
             aspect-[3/4]
