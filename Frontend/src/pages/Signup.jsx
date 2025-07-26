@@ -93,7 +93,9 @@ export default function Signup() {
 
           <Button handleClick={handleSignUpButton} name={"Sign Up"} />
 
-          <h1 className="text-center text-sm md:text-lg hover:cursor-pointer">
+          <h1 onClick={() => {
+            navigate("/login");
+          }} className="text-center text-sm md:text-lg hover:cursor-pointer hover:text-blue-700">
             Already have an account?
           </h1>
         </div>

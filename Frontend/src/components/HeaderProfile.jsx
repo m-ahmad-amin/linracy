@@ -127,7 +127,7 @@ export default function HeaderProfile({ userName, profilePicture, userData }) {
             <h2 className="text-lg font-bold mb-2">Post</h2>
             <img
             src={uploadedURL}
-            className="h-full w-full object-cover rounded-lg border"></img>
+            className="w-full aspect-square object-cover rounded-lg border"></img>
             <h2 className="text-lg font-bold mb-2 mt-2">Enter Caption</h2>
             <textarea
               value={caption}
