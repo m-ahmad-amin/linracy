@@ -21,6 +21,10 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", dataRoutes);
 
+app.get("/health", (req, res) => {
+  res.status(200).send("ok");
+});
+
 app.listen(PORT, () => {
   console.log("App is listening");
   connectDB();
