@@ -4,6 +4,7 @@ import Signup from "./pages/Signup";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import HomePage from "./pages/HomePage";
+import Landing from "./pages/Landing";
 import Full from "./pages/Full";
 import { Loader } from "lucide-react";
 import { Toaster } from 'react-hot-toast';
@@ -31,7 +32,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
+        <Route path="/" element={authUser ? <HomePage /> : <Landing />} />
         <Route path="/login" element={!authUser ? <Login /> : <Navigate to="/"/>} />
         <Route path="/signup" element={!authUser ? <Signup /> : <Navigate to="/"/>} />
         <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
